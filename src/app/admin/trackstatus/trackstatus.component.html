@@ -1,0 +1,72 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="wrapper" style="align-items: center">
+    <h1><u>Track Status</u></h1>
+    <div id="formContent">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <label for="job">Job</label>
+            </td>
+            <td>
+              <select
+                id="job"
+                (change)="jobSelected($event)"
+                class="form-control"
+                style="width: 100% !important; margin-left: 37px"
+              >
+                <option value="" [disabled]="true">Choose one</option>
+                <option *ngFor="let item of jobIds" value="{{ item._id }}"
+                  >{{ item.category }} {{ item.designation }}
+                </option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="status">Status</label></td>
+            <td>
+              <select
+                id="status"
+                (change)="statusSelected($event)"
+                class="form-control"
+                style="width: 100% !important; margin-left: 37px"
+              >
+                <option value="" [disabled]="true">Choose one</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Rejected">Rejected</option>
+                <option value="ToBeScheduled">Pending</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <input type="submit" value="Track" />
+    </div>
+  </div>
+</form>
+<!-- <div class="col-sm-1"></div> -->
+<div class="text-center container-float">
+  <h1 *ngIf="isAnyCandidate && isStatusSelected">List Of Candidates</h1>
+  <div
+    style="width: 400px; margin-left: auto; margin-right: auto; font-weight: bold"
+  >
+    <table
+      class="table table-bordered table-striped"
+      *ngIf="isAnyCandidate && isStatusSelected"
+    >
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+        <tr *ngFor="let item of candidates">
+          <td>{{ item.candidateId.name }}</td>
+          <td>{{ item.candidateId.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h1 style="font-weight: bold" *ngIf="!isAnyCandidate && isStatusSelected">
+      No Candidates found
+    </h1>
+  </div>
+</div>

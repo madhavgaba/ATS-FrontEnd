@@ -1,0 +1,107 @@
+<!-- <div class="container">
+  <table id="customers">
+    <tr>
+      <th>Category</th>
+      <th>Designation</th>
+      <th>Job ID</th>
+      <th>Location</th>
+      <th>Is Open</th>
+      <th>Last Date</th>
+      <th>Blocked Job IDs</th>
+      <th>Skills Required</th>
+      <th>Apply</th>
+    </tr>
+    <tr *ngFor="let job of allJobs">
+      <td>{{ job.category }}</td>
+      <td>{{ job.designation }}</td>
+      <td>{{ job.jobId }}</td>
+      <td>{{ job.location }}</td>
+      <td>{{ job.isOpen }}</td>
+      <td>{{ job.lastDate }}</td>
+      <td>
+        <ol *ngFor="let blocked of job.blockJobId">
+          {{
+            blocked
+          }}
+        </ol>
+      </td>
+      <td>
+        <ol *ngFor="let skills of job.skillsRequired">
+          {{
+            skills.skillName
+          }}
+        </ol>
+      </td>
+      <td><button (click)="applyJob(job._id)">Apply Job</button></td>
+    </tr>
+  </table>
+</div> -->
+<body>
+  <div class="container">
+    <div class="card-container" *ngFor="let job of allJobs">
+      <div class="card" style="width: 90%;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="card-text">
+                <span class="card-attribute">Category: </span>
+                <span class="card-value">{{ job.category }}</span>
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p class="card-text">
+                <span class="card-attribute">Designation: </span>
+                <span class="card-value">{{ job.designation }}</span>
+              </p>
+            </div>
+          </div>
+          <hr />
+          <!-- <p class="card-text">
+            <span class="card-attribute">Job Id: </span>
+            <span class="card-value">{{ job.jobId }}</span>
+          </p> -->
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="card-text">
+                <span class="card-attribute">Location: </span><br />
+                <span class="card-value">{{ job.location }}</span>
+              </p>
+            </div>
+            <div class="col-sm-3">
+              <div class="card-text">
+                <span class="card-attribute">Skills Required: </span><br />
+                <p class="card-value" *ngFor="let skill of job.skillsRequired">
+                  {{ skill.skillName }}
+                </p>
+                &nbsp;&nbsp;
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <p class="card-text">
+                <span class="card-attribute">Salary: </span><br />
+                <span class="card-value">{{ job.paySalary }}</span>
+              </p>
+            </div>
+            <div class="col-sm-3">
+              <p class="card-text">
+                <span class="card-attribute">Last Date: </span><br />
+                <span class="card-value">{{ job.lastDate }}</span>
+              </p>
+            </div>
+          </div>
+
+          <button
+            (click)="applyJob(job._id)"
+            class="btn btn-primary"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Click to apply"
+          >
+            Apply Job
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

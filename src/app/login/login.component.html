@@ -1,0 +1,90 @@
+<header>
+  <ul>
+    <li>
+      <a style="font-weight: bold">Application Tracking System</a>
+    </li>
+    <li style="float: right;">
+      <a style="font-weight: bold;" [routerLink]="['/allJobs']">Job Openings</a>
+    </li>
+  </ul>
+</header>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" name="login-form">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <div class="fadeIn first">
+        <h1 class="text-center">Log In</h1>
+      </div>
+      <div
+        class="form-group"
+        [ngClass]="{
+          'has-error':
+            formGroup.get('email').errors && formGroup.get('email').touched
+        }"
+      >
+        <label for="email" class="control-label">Email</label>
+        <br />
+        <input
+          type="text"
+          id="email"
+          formControlName="email"
+          class="fadeIn second"
+          required
+        />
+        <span
+          class="help-block"
+          *ngIf="
+            formGroup.get('email').errors && formGroup.get('email').touched
+          "
+        >
+          <span *ngIf="formGroup.get('email').errors">
+            Please enter a valid email
+          </span>
+        </span>
+      </div>
+      <div
+        class="form-group"
+        [ngClass]="{
+          'has-error':
+            formGroup.get('password').errors &&
+            formGroup.get('password').touched
+        }"
+      >
+        <label for="pwd" class="control-label">Password</label>
+        <input
+          id="pwd"
+          formControlName="password"
+          class="fadeIn third additional"
+          style="text-align: left"
+          type="password"
+        />
+        <span
+          class="help-block"
+          *ngIf="
+            formGroup.get('password').errors &&
+            formGroup.get('password').touched
+          "
+        >
+          <span *ngIf="formGroup.get('password').errors">
+            Password is required
+          </span>
+        </span>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!this.formGroup.valid"
+      >
+        Log In
+      </button>
+      <br />
+      <br />
+      New User?&nbsp;&nbsp;<button
+        class="btn btn-danger"
+        (click)="onPressSignUp()"
+      >
+        Register Here
+      </button>
+      <br /><br />
+    </div>
+  </div>
+</form>

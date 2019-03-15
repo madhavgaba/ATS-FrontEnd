@@ -1,0 +1,20 @@
+<div class="container">
+  <table class="table table-bordered">
+    <tr>
+      <th>Job Id</th>
+      <th>Category</th>
+      <th>Designation</th>
+      <th>Status</th>
+      <th>Date</th>
+      <th>Time</th>
+    </tr>
+    <tr *ngFor="let item of appliedJobs">
+      <td>{{ item.jobId.jobId }}</td>
+      <td>{{ item.jobId.category }}</td>
+      <td>{{ item.jobId.designation }}</td>
+      <td>{{ item.status }}</td>
+      <!-- <td>{{ item.time }}</td>
+      <td>{{ item.date }}</td> -->
+    </tr>
+  </table>
+</div>

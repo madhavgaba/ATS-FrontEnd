@@ -1,0 +1,89 @@
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a [routerLink]="['/candidate/myprofile']">My Profile</a>
+  </li>
+  <li><a [routerLink]="['/candidate/editprofile']">Edit Profile</a></li>
+</ul>
+
+<div class="container text-center">
+  <h1><u>My Profile</u></h1>
+</div>
+
+<div class="container !important table-bordered" style="margin-top: 20px">
+  <!-- <div class="card-container"> -->
+  <!-- <div class="card"> -->
+
+  <div class="container list-container">
+    <h4>
+      <div class="col-sm-2">
+        <b>Name:</b>
+      </div>
+      <div class="col-sm-4">{{ profile.name }}</div>
+    </h4>
+    <br />
+    <hr />
+
+    <h4>
+      <div class="col-sm-2"><b>Email: </b></div>
+      <div class="col-sm-4">
+        {{ profile.email }}
+      </div>
+    </h4>
+    <br />
+    <hr />
+    <h4>
+      <div class="col-sm-2">
+        <b>Contact: </b>
+      </div>
+      <div class="col-sm-6">{{ profile.phoneNumber }}</div>
+    </h4>
+    <br />
+    <hr />
+    <h4>
+      <div class="row">
+        <div class="col-sm-2"><b>Education:</b></div>
+        <div class="col-sm-4">
+          {{ profile.education.college }},
+          {{ profile.education.completionDate | date }}
+        </div>
+      </div>
+    </h4>
+    <br />
+    <hr />
+    <h4>
+      <div class="row">
+        <div class="col-sm-2"><b>Previous Employee:</b></div>
+        <div class="col-sm-5">{{ profile.previousEmployee }}</div>
+      </div>
+    </h4>
+    <br />
+    <hr />
+
+    <h4>
+      <div class="row">
+        <div class="col-sm-2"><b>Experience: </b></div>
+        <div class="col-sm-5">{{ profile.experience }} years</div>
+      </div>
+    </h4>
+
+    <br />
+    <hr />
+
+    <h4><b>Uploads:</b></h4>
+  </div>
+
+  <ul style="list-style-type: none">
+    <iframe
+      width="90%"
+      height="500px"
+      [src]="getFileUrl(profile.resume) | safe"
+    ></iframe>
+    <iframe
+      width="90%"
+      height="500px"
+      [src]="getFileUrl(profile.video) | safe"
+    ></iframe>
+  </ul>
+  <!-- </div>
+  </div> -->
+</div>

@@ -1,0 +1,108 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" name="login-form">
+  <div class="wrapper">
+    <h1><u>Add Location</u></h1>
+    <div id="formContent" style="align-items: center">
+      <table>
+        <tbody>
+          <tr
+            [ngClass]="{
+              'has-error':
+                formGroup.get('location').errors &&
+                formGroup.get('location').touched
+            }"
+          >
+            <td>
+              <label for="location" class="control-label">Location*</label>
+            </td>
+            <td>
+              <input
+                type="text"
+                formControlName="location"
+                class="form-control"
+                id="location"
+                placeholder="Enter Location"
+              />
+              <span
+                class="help-block"
+                *ngIf="
+                  formGroup.get('location').errors &&
+                  formGroup.get('location').touched
+                "
+              >
+                <span *ngIf="formGroup.get('location').errors">
+                  Location is required
+                </span>
+              </span>
+            </td>
+          </tr>
+          <tr
+            [ngClass]="{
+              'has-error':
+                formGroup.get('address').errors &&
+                formGroup.get('address').touched
+            }"
+          >
+            <td>
+              <label for="address" class="control-label">Address*</label>
+            </td>
+            <td>
+              <textarea
+                type="text"
+                id="address"
+                formControlName="address"
+                class="form-control"
+              ></textarea>
+              <span
+                class="help-block"
+                *ngIf="
+                  formGroup.get('address').errors &&
+                  formGroup.get('address').touched
+                "
+              >
+                <span *ngIf="formGroup.get('address').errors">
+                  address is required and should be of at least 10 characters
+                </span>
+              </span>
+            </td>
+          </tr>
+          <tr
+            [ngClass]="{
+              'has-error':
+                formGroup.get('pincode').errors &&
+                formGroup.get('pincode').touched
+            }"
+          >
+            <td>
+              <label for="pincode" class="control-label">Pincode*</label>
+            </td>
+            <td>
+              <input
+                type="number"
+                class="form-control"
+                id="pincode"
+                formControlName="pincode"
+              />
+              <span
+                class="help-block"
+                *ngIf="
+                  formGroup.get('pincode').errors &&
+                  formGroup.get('pincode').touched
+                "
+              >
+                <span *ngIf="formGroup.get('pincode').errors">
+                  pincode should be of exactly 6 digits
+                </span>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <input
+        type="submit"
+        [disabled]="!this.formGroup.valid"
+        value="Add Location"
+      />
+    </div>
+  </div>
+</form>

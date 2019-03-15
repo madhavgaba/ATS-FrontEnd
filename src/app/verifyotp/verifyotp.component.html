@@ -1,0 +1,23 @@
+<div class="container text-center">
+  <h1>You need to verify OTP to proceed further</h1>
+</div>
+
+<div class="text-center container" style="margin-top: 14%">
+  <label>
+    OTP:
+    <input type="text" class="form-control" (input)="otpEvent($event)" />
+  </label>
+  <button type="button" class="custom-button" (click)="sendOtpEvent($event)">
+    SendOtp
+  </button>
+  <br />
+  <div class="text-center">
+    <button
+      type="button"
+      class="btnx btn-primary"
+      (click)="verifyOtpEvent($event)"
+    >
+      Verify OTP
+    </button>
+  </div>
+</div>

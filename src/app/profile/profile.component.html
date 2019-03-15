@@ -1,0 +1,135 @@
+<!-- <div class="container" *ngIf="profile">
+  <div class="card">
+    <h2>Name: {{ profile.name }}</h2>
+    <h2>Email: {{ profile.email }}</h2>
+    <h2>Phone Number: {{ profile.phoneNumber }}</h2>
+    <h2>College: {{ profile.education.college }}</h2>
+    <h2>Completion Date: {{ profile.education.completionDate }}</h2>
+    <h2>Degree: {{ profile.education.degree }}</h2>
+    <h2>Experience: {{ profile.experience }}</h2>
+  </div>
+</div>
+
+<iframe [src]="getFileUrl(profile.resume) | safe"></iframe>
+<iframe [src]="getFileUrl(profile.video) | safe"></iframe> -->
+
+<header>
+  <ul>
+    <li><a href="#" style="font-weight: bold">Back To dashboard</a></li>
+    <li style="float: right">
+      <a style="font-weight: bold" (click)="logout()">Logout</a>
+    </li>
+  </ul>
+</header>
+<!-- <div class="container text-center">
+  <h1><u>Profile</u></h1>
+  <div class="container list-container">
+    <h3><b>Name</b> {{ profile.name }}</h3>
+    <h3><b>Email</b> {{ profile.email }}</h3>
+    <h3><b>Contact</b> {{ profile.phoneNumber }}</h3>
+    <h3>
+      <b>Education</b> {{ profile.education.college }},
+      {{ profile.education.completionDate | date }}
+    </h3>
+
+    <h3><b>Experience</b> {{ profile.experience }}</h3>
+
+    <h3><b>Uploads</b></h3>
+  </div>
+  <ul style="list-style-type: none">
+    <iframe
+      width="100%"
+      height="600px"
+      [src]="getFileUrl(profile.resume) | safe"
+    ></iframe>
+    <iframe
+      width="100%"
+      height="600px"
+      [src]="getFileUrl(profile.video) | safe"
+    ></iframe>
+  </ul>
+</div>
+
+ -->
+<div class="container text-center">
+  <h1><u>Candidate Profile</u></h1>
+</div>
+
+<div class="container !important table-bordered" style="margin-top: 20px">
+  <!-- <div class="card-container"> -->
+  <!-- <div class="card"> -->
+
+  <div class="container list-container">
+    <h4>
+      <div class="col-sm-2">
+        <b>Name:</b>
+      </div>
+      <div class="col-sm-4">{{ profile.name }}</div>
+    </h4>
+    <br />
+    <hr />
+
+    <h4>
+      <div class="col-sm-2"><b>Email: </b></div>
+      <div class="col-sm-4">
+        {{ profile.email }}
+      </div>
+    </h4>
+    <br />
+    <hr />
+    <h4>
+      <div class="col-sm-2">
+        <b>Contact: </b>
+      </div>
+      <div class="col-sm-6">{{ profile.phoneNumber }}</div>
+    </h4>
+    <br />
+    <hr />
+    <h4>
+      <div class="row">
+        <div class="col-sm-2"><b>Education:</b></div>
+        <div class="col-sm-4">
+          {{ profile.education.college }},
+          {{ profile.education.completionDate | date }}
+        </div>
+      </div>
+    </h4>
+    <br />
+    <hr />
+    <h4>
+      <div class="row">
+        <div class="col-sm-2"><b>Previous Employee:</b></div>
+        <div class="col-sm-5">{{ profile.previousEmployee }}</div>
+      </div>
+    </h4>
+    <br />
+    <hr />
+
+    <h4>
+      <div class="row">
+        <div class="col-sm-2"><b>Experience: </b></div>
+        <div class="col-sm-5">{{ profile.experience }} years</div>
+      </div>
+    </h4>
+
+    <br />
+    <hr />
+
+    <h4><b>Uploads:</b></h4>
+  </div>
+
+  <ul style="list-style-type: none">
+    <iframe
+      width="100%"
+      height="500px"
+      [src]="getFileUrl(profile.resume) | safe"
+    ></iframe>
+    <iframe
+      width="100%"
+      height="500px"
+      [src]="getFileUrl(profile.video) | safe"
+    ></iframe>
+  </ul>
+  <!-- </div>
+  </div> -->
+</div>

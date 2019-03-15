@@ -1,0 +1,12 @@
+<ul>
+  <li><a [routerLink]="['/admin/addCategory']">Add Category</a></li>
+  <li><a [routerLink]="['/admin/addDesignation']">Add Designation</a></li>
+  <li><a [routerLink]="['/admin/addInterviewer']">Add Interviewer</a></li>
+  <li><a [routerLink]="['/admin/addJob']">Add Job</a></li>
+  <li><a [routerLink]="['/admin/assignInterviewer']">Schedule</a></li>
+  <li><a [routerLink]="['/admin/listInterviewers']">Interviewers</a></li>
+  <li><a [routerLink]="['/admin/addLocation']">Add Location</a></li>
+  <li><a [routerLink]="['/admin/track']">Track</a></li>
+  <li><a (click)="logout()">Logout</a></li>
+</ul>
+<router-outlet></router-outlet>

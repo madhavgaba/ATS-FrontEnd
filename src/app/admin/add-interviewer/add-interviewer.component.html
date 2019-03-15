@@ -1,0 +1,181 @@
+<form [formGroup]="formgroup" (ngSubmit)="addInterviewer()" name="login-form">
+  <div class="wrapper">
+    <h1><u>Add Interviewer</u></h1>
+    <div id="formContent" style="align-items: center">
+      <table>
+        <tbody>
+          <tr
+            [ngClass]="{
+              'has-error':
+                formgroup.get('email').errors && formgroup.get('email').touched
+            }"
+          >
+            <td>
+              <label for="email" class="control-label">Email</label>
+            </td>
+            <td>
+              <input
+                type="text"
+                formControlName="email"
+                class="form-control"
+                placeholder="Enter email"
+              />
+              <span
+                class="help-block"
+                *ngIf="
+                  formgroup.get('email').errors &&
+                  formgroup.get('email').touched
+                "
+              >
+                <span *ngIf="formgroup.get('email').errors">
+                  Email is required
+                </span>
+              </span>
+            </td>
+          </tr>
+          <tr
+            [ngClass]="{
+              'has-error':
+                formgroup.get('password').errors &&
+                formgroup.get('password').touched
+            }"
+          >
+            <td>
+              <label for="password" class="control-label">Password</label>
+            </td>
+            <td>
+              <input
+                type="password"
+                id="password"
+                formControlName="password"
+                class="form-control"
+                placeholder="*******"
+              />
+              <span
+                class="help-block"
+                *ngIf="
+                  formgroup.get('password').errors &&
+                  formgroup.get('password').touched
+                "
+              >
+                <span *ngIf="formgroup.get('password').errors">
+                  Password should be at least 6 characters long
+                </span>
+              </span>
+            </td>
+          </tr>
+          <tr
+            [ngClass]="{
+              'has-error':
+                formgroup.get('password').value !==
+                formgroup.get('confirmPassword').value
+            }"
+          >
+            <td>
+              <label for="pwd" class="control-label">Confirm</label>
+            </td>
+            <td>
+              <input
+                type="password"
+                id="pwd"
+                class="form-control"
+                placeholder="*******"
+                formControlName="confirmPassword"
+              />
+              <span
+                class="help-block"
+                *ngIf="
+                  formgroup.get('confirmPassword').value !==
+                  formgroup.get('password').value
+                "
+              >
+                <!-- <span *ngIf="checkConfirmPassword()"> -->
+                Passwords do not match
+                <!-- </span> -->
+              </span>
+            </td>
+          </tr>
+          <tr
+            [ngClass]="{
+              'has-error':
+                formgroup.get('category').errors &&
+                formgroup.get('category').touched
+            }"
+          >
+            <td>
+              <label for="category" class="control-label">Category</label>
+            </td>
+            <td>
+              <select
+                id="category"
+                formControlName="category"
+                (change)="categorySelected($event)"
+                class="form-control"
+                width="150px"
+              >
+                <option value="" [disabled]="true">Choose One</option>
+                <option
+                  *ngFor="let category of categories"
+                  value="{{ category.category }}"
+                  >{{ category.category }}</option
+                >
+              </select>
+              <span
+                class="help-block"
+                *ngIf="
+                  formgroup.get('category').errors &&
+                  formgroup.get('category').touched
+                "
+              >
+                <span *ngIf="formgroup.get('category').errors">
+                  Category is required
+                </span>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td
+              [ngClass]="{
+                'has-error':
+                  formgroup.get('designation').errors &&
+                  formgroup.get('designation').touched
+              }"
+            >
+              <label for="designation" class="control-label">Designation</label>
+            </td>
+            <td>
+              <select
+                id="designation"
+                formControlName="designation"
+                class="form-control"
+              >
+                <option value="" [disabled]="true">Choose One</option>
+                <option
+                  *ngFor="let levels of designation"
+                  value="{{ levels }}"
+                  >{{ levels }}</option
+                >
+              </select>
+              <span
+                class="help-block"
+                *ngIf="
+                  formgroup.get('designation').errors &&
+                  formgroup.get('designation').touched
+                "
+              >
+                <span
+                  *ngIf="formgroup.get('designation').errors"
+                  style="color: #a94442;"
+                >
+                  Designation is required
+                </span>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <input type="submit" value="Add Interviewer" />
+    </div>
+  </div>
+</form>

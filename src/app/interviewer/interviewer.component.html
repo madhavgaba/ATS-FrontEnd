@@ -1,0 +1,86 @@
+<header>
+  <ul>
+    <li><a style="font-weight: bold">Home</a></li>
+    <li style="float: right">
+      <a style="font-weight: bold" (click)="logout()">Logout</a>
+    </li>
+  </ul>
+</header>
+<div class="container text-center" *ngIf="numberOfInterviews > 0">
+  <h1><u>Pending Interviews</u></h1>
+  <div class="card-container" *ngFor="let item of interviewerSchedules">
+    <div class="card" style="width: 100%;">
+      <div class="card-body">
+        <h4><b>Candidate Email - </b> {{ item.candidateId.email }}</h4>
+        <hr />
+        <h4>
+          <b>Job Info - </b> {{ item.jobId.category }},
+          {{ item.jobId.designation }}
+        </h4>
+        <hr />
+        <h4>
+          <b>Date - </b> {{ item.date | date }} &nbsp;&nbsp;<b>Time - </b>
+          {{ item.time }}
+        </h4>
+        <hr />
+
+        <div class="row">
+          <div class="col-sm-4 col-xs-4">
+            <button
+              type="button"
+              class="btn"
+              (click)="checkProfile(item.candidateId._id)"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="View candidate profile"
+            >
+              Candidate Profile
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <label for="comment"
+              >Enter Interview result Here <br />
+              <textarea
+                id="comment"
+                style="width: 200%"
+                (change)="onChangeComment($event)"
+              ></textarea>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="submitResponse($event, item)"
+            >
+              Submit Response
+            </button>
+          </div>
+
+          <div class="col-sm-8">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-toggle="tooltip"
+              data-placement="right"
+              title="In case you do not want to take the interview"
+              (click)="rejectInterview($event, item)"
+            >
+              Reject Interview
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
+<div class="row" *ngIf="numberOfInterviews == 0">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-5"><h2>No Pending Interviews</h2></div>
+</div>

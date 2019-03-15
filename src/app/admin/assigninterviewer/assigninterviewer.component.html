@@ -1,0 +1,139 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="wrapper">
+    <h1><u>Schedule Interview</u></h1>
+    <div id="formContent">
+      <table>
+        <tbody>
+          <tr>
+            <td><label for="jobId" class="text-left">JobId</label></td>
+            <td>
+              <select
+                id="JobId"
+                (change)="getAllCandidates()"
+                formControlName="jobId"
+                class="form-control"
+              >
+                <option value="" [disabled]="true">Choose One</option>
+                <option *ngFor="let id of jobs" value="{{ id._id }}"
+                  >{{ id.category }} {{ id.designation }}</option
+                >
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="interviewee">Candidate</label></td>
+            <td>
+              <select
+                id="interviewee"
+                formControlName="candidateId"
+                (change)="getHistory()"
+                class="form-control"
+              >
+                <option value="" [disabled]="true">Choose one</option>
+                <option
+                  *ngFor="let candidate of candidates"
+                  value="{{ candidate.candidateId._id }}"
+                  >{{ candidate.candidateId.email }}</option
+                >
+              </select>
+            </td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td colspan="2">
+              <div *ngIf="isCandidateSelected && interviewsDone.length > 0">
+                <h3>Candidate History</h3>
+                <table class="table table-bordered">
+                  <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Interviewer</th>
+                    <th>Remarks</th>
+                  </tr>
+                  <tr *ngFor="let item of interviewsDone">
+                    <td>{{ item.date | date }}</td>
+                    <td>{{ item.time }}</td>
+                    <td>{{ item.interviewerId.email }}</td>
+                    <td>{{ item.remarks }}</td>
+                  </tr>
+                </table>
+              </div>
+              <div *ngIf="isCandidateSelected && interviewsDone.length == 0">
+                <p>No previous interviews done</p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td><label for="email">Interviewer</label></td>
+            <td>
+              <select
+                id="email"
+                formControlName="interviewerId"
+                class="form-control"
+              >
+                <option value="" [disabled]="true">Choose one</option>
+                <option
+                  *ngFor="let item of allInterviewers"
+                  value="{{ item._id }}"
+                >
+                  {{ item.email }} {{ item.category }}
+                  {{ item.designation }}</option
+                >
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="date">Date</label></td>
+            <td>
+              <input
+                type="date"
+                min="{{ date }}"
+                formControlName="date"
+                class="form-control"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="time">Time</label></td>
+            <td>
+              <input type="time" formControlName="time" class="form-control" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="markSelectionStatus()"
+        [disabled]="!this.formGroup.valid"
+      >
+        Accept
+      </button>
+      <button
+        class="btn btn-danger"
+        type="button"
+        (click)="markRejectionStatus()"
+        [disabled]="!this.formGroup.valid"
+      >
+        Reject
+      </button>
+      <br /><br />
+      <button type="submit" [disabled]="!this.formGroup.valid">Schedule</button>
+      <br /><br />
+    </div>
+  </div>
+  <br /><br />
+  <!-- <h1 *ngIf="isCandidateSelected" class="text-center">Candidate History</h1> -->
+
+  <!-- <div *ngFor="let item of interviewsDone">
+    <p>
+      History {{ item.date }} {{ item.time }}
+      {{ item.interviewerId.email }}
+    </p>
+  </div> -->
+</form>

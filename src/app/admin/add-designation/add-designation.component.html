@@ -1,0 +1,44 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="wrapper" style="align-items: center">
+    <h1><u>Add Designation</u></h1>
+    <div id="formContent">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <label for="category">Category</label>
+            </td>
+            <td>
+              <select
+                id="category"
+                (change)="handleChange($event)"
+                class="form-control"
+                style="width: 100% !important;"
+              >
+                <option value="" [disabled]="true">Choose one</option>
+                <option
+                  *ngFor="let category of categories"
+                  value="{{ category.category }}"
+                  >{{ category.category }}</option
+                >
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="designation">Designation</label></td>
+            <td>
+              <input
+                type="text"
+                id="designation"
+                formControlName="designation"
+                placeholder="L1"
+                class="form-control"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <input type="submit" value="Add Designation" />
+    </div>
+  </div>
+</form>

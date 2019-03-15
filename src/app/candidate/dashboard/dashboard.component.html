@@ -1,0 +1,90 @@
+<!-- <div class="container">
+  <table id="customers">
+    <tr>
+      <th>Job ID</th>
+      <th>Category</th>
+      <th>Designation</th>
+      <th>Status</th>
+      <th>Date</th>
+      <th>Time</th>
+    </tr>
+    <tr *ngFor="let item of appliedJobs">
+      <td>{{ item.jobId.jobId }}</td>
+      <td>{{ item.jobId.category }}</td>
+      <td>{{ item.jobId.designation }}</td>
+      <td>{{ item.status }}</td>
+       <td>{{ item.date | date }}</td>
+      <td>{{ item.time }}</td>
+    </tr>
+  </table>
+</div> -->
+
+<body>
+  <div class="container">
+    <h1 class="text-center"><u>My Applications</u></h1>
+    <div class="card-container" *ngFor="let item of appliedJobs">
+      <div class="card" style="width: 90%;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <p class="card-text">
+                <span class="card-attribute">Designation: </span>
+                <span class="card-value">{{ item.jobId.designation }}</span>
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p class="card-text">
+                <span class="card-attribute">Category: </span>
+                <span class="card-value">{{ item.jobId.category }}</span>
+              </p>
+            </div>
+          </div>
+          <hr />
+          <!-- <p class="card-text">
+            <span class="card-attribute">Job Id: </span>
+            <span class="card-value">{{ job.jobId }}</span>
+          </p> -->
+
+          <div class="row">
+            <div class="col-md-2">
+              <p class="card-text">
+                <span class="card-attribute">JobId: </span>
+                <span class="card-value">{{ item.jobId.jobId }}</span>
+              </p>
+            </div>
+            <div class="col-sm-2">
+              <p class="card-text">
+                <span class="card-attribute">Designation: </span>
+                <span class="card-value">{{ item.jobId.designation }}</span>
+              </p>
+            </div>
+            <div class="col-sm-3">
+              <p class="card-text">
+                <span class="card-attribute">Status: </span>
+                <span class="card-value">{{ item.status }}</span>
+              </p>
+            </div>
+            <div class="col-sm-3">
+              <p class="card-text">
+                <span class="card-attribute">Date: </span>
+                <span class="card-value" *ngIf="item.date">{{
+                  item.date | date
+                }}</span>
+                <span class="card-value" *ngIf="!item.date">N/A</span>
+              </p>
+            </div>
+            <div class="col-sm-2">
+              <p class="card-text">
+                <span class="card-attribute">Time: </span>
+                <span class="card-value" *ngIf="item.time">{{
+                  item.time
+                }}</span>
+                <span class="card-value" *ngIf="!item.time">N/A</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
