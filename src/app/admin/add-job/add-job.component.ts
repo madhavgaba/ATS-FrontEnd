@@ -69,7 +69,10 @@ export class AddJobComponent implements OnInit {
   }
 
   addSkill() {
-    this.skillForm = this.skillForm as FormArray;
+    console.log('1', this.skillForm);
+
+    //this.skillForm = this.skillForm as FormArray;
+    console.log('2', this.skillForm);
     this.skillForm.push(this.createSkill());
 
     // let curSkillForm = <FormArray>this.skillForm;

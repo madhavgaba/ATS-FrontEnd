@@ -222,16 +222,16 @@
         <div
           class="container"
           [formGroupName]="i"
-          *ngFor="let skill of this.skillForm.controls; let i = index"
+          *ngFor="let skill of skillForm.controls; let i = index"
         >
-          <div class="col-sm-7">
-            <input
-              class="myclass form-control"
-              type="text"
-              placeholder="add skill"
-              formControlName="skillName"
-            />
-          </div>
+          <!-- <div class="col-sm-7"> -->
+          <input
+            class="myclass form-control"
+            type="text"
+            placeholder="add skill"
+            formControlName="skillName"
+          />
+          <!-- </div> -->
         </div>
         <button type="submit" class="btn btn-primary">Add</button>&nbsp;&nbsp;
         <button type="reset" class="btn btn-danger" (click)="resetSkills()">
